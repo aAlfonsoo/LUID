@@ -2,7 +2,6 @@
   "name": "luid-react",
   "private": true,
   "version": "0.0.1",
-  "homepage":".",
   "type": "module",
   "scripts": {
     "dev": "vite",
