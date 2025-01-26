@@ -1,0 +1,681 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #bfecfa;
+}
+
+/* CLOUDS */
+.cloud {
+    width: 350px;
+    height: 120px;
+    background: #fff;
+    background: linear-gradient(to top, #fff 100%);
+    border-radius: 100px;
+    position: absolute;
+    margin: 120px auto 20px;
+    z-index: -1;
+    transition: ease 1s;
+}
+
+.cloud:after,
+.cloud:before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    z-index: -1;
+    border-radius: 100px;
+}
+
+.cloud:after {
+    width: 100px;
+    height: 100px;
+    top: -50px;
+    left: 50px;
+}
+
+.cloud:before {
+    width: 180px;
+    height: 180px;
+    top: -90px;
+    right: 50px;
+}
+
+/* Cloud Animations */
+@keyframes moveclouds {
+    0% {
+        margin-left: 1000px;
+    }
+
+    100% {
+        margin-left: -1000px;
+    }
+}
+
+.cloud {
+    animation: moveclouds 15s linear infinite;
+}
+
+.x1 {
+    top: -50px;
+    left: 100px;
+    transform: scale(0.3);
+    opacity: 0.9;
+}
+
+.x1_5 {
+    top: -80px;
+    left: 250px;
+    transform: scale(0.3);
+    animation-duration: 17s;
+}
+
+.x2 {
+    left: 250px;
+    top: 30px;
+    transform: scale(0.6);
+    opacity: 0.6;
+    animation-duration: 25s;
+}
+
+.x3 {
+    left: 250px;
+    bottom: -70px;
+    transform: scale(0.6);
+    opacity: 0.8;
+    animation-duration: 25s;
+}
+
+.x4 {
+    left: 470px;
+    bottom: 20px;
+    transform: scale(0.75);
+    opacity: 0.75;
+    animation-duration: 18s;
+}
+
+.x5 {
+    left: 200px;
+    top: 300px;
+    transform: scale(0.5);
+    opacity: 0.8;
+    animation-duration: 20s;
+}
+
+/* Logo and Sun */
+.logo,
+.sun {
+    position: absolute;
+}
+
+.logo {
+    height: 110px;
+    top: 27px;
+    right: -13px;
+    z-index: 2;
+}
+
+.sun {
+    clip-path: polygon(22% 0%, 80% 0%, 80% 100%, 22% 100%);
+    height: 450px;
+    top: -170px;
+    right: -330px;
+    z-index: 1;
+}
+
+/* Text Labels */
+.singsing,
+.pampanga,
+.maranun {
+    position: absolute;
+}
+
+.singsing {
+    height: 65px;
+    bottom: 315px;
+    right: 150px;
+}
+
+.pampanga {
+    height: 80px;
+    bottom: 205px;
+    right: 150px;
+}
+
+.maranun {
+    height: 60px;
+    bottom: 90px;
+    right: 152px;
+}
+
+/* Image Buttons */
+.image-button {
+    cursor: pointer;
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.image-button:hover {
+    transform: scale(1.1);
+}
+
+.spelling-games {
+    top: 50px;
+    left: 300px;
+}
+
+.flash-cards {
+    top: 50px;
+    left: 580px;
+}
+
+.picture-dictionaries {
+    top: 50px;
+    left: 860px;
+}
+
+.numbers {
+    top: 220px;
+    left: 125px;
+}
+
+.phrases {
+    top: 220px;
+    left: 300px;
+}
+
+.colours {
+    top: 220px;
+    left: 475px;
+}
+
+.animals {
+    top: 220px;
+    left: 650px;
+}
+
+.fruitsVeg {
+    top: 220px;
+    left: 825px;
+}
+
+.genVocab {
+    top: 220px;
+    left: 1040px;
+}
+
+.book1 {
+    top: 380px;
+    left: 0px;
+}
+
+.book2 {
+    top: 380px;
+    left: 275px;
+}
+
+.book3 {
+    top: 380px;
+    left: 550px;
+}
+
+/* Game Images */
+.game-image,
+.game-image2,
+.game-image3 {
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.game-image {
+    clip-path: polygon(0% 0%, 90% 0%, 90% 70%, 0% 70%);
+    height: 260px;
+}
+
+.game-image2,
+.game-image3 {
+    clip-path: polygon(7% 3%, 85% 3%, 85% 70%, 7% 70%);
+}
+
+.game-image2 {
+    height: 230px;
+}
+
+.game-image3 {
+    height: 350px;
+}
+
+.image-button:hover .game-image,
+.image-button:hover .game-image2,
+.image-button:hover .game-image3 {
+    opacity: 0.8;
+}
+
+/* Music Button */
+.music-button {
+    font-size: 24px;
+    background-color: #b42f2f;
+    border: 3px solid transparent;
+    border-radius: 15%;
+    color: #e9e7e7;
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.music-button:hover {
+    transform: scale(1.1);
+}
+
+/* Slider */
+.custom-slider {
+    appearance: none;
+    width: 450px;
+    position: absolute;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.custom-slider::-webkit-slider-thumb,
+.custom-slider::-moz-range-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background: #b42f2f;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.goBack {
+    top: 35px;
+    left: 50px;
+}
+
+.goBack-image {
+    height: 100px;
+}
+
+
+.translations-table-wrapper {
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 100px;
+}
+
+.translations-table {
+    width: 1000px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+
+.translations-table th,
+.translations-table td {
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 21px;
+    font-family: 'Comic Sans MS', sans-serif;
+
+}
+
+.translations-table td img {
+    height: 100px;
+    object-fit: cover;
+}
+
+.translations-table th {
+    background-color: #ffb6c1;
+}
+
+.translations-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.translations-table tr:hover {
+    background-color: #b5eac4;
+}
+
+/* Styling for the scrollbar */
+.translations-table-wrapper::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+}
+
+.translations-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.translations-table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #ffb6c1;
+    border-radius: 10px;
+}
+
+.category-title-image {
+    position: absolute;
+    left: 500px;
+    top: -20px;
+    height: 600px;
+    clip-path: polygon(10% 9%, 98% 9%, 98% 35%, 10% 35%);
+}
+
+/*books*/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls {
+    margin-bottom: 0.7rem;
+}
+
+.bookButton {
+    background-color: #4173a5;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.book {
+    width: 435px;
+    height: 625px;
+    top: 0px;
+    left: 220px;
+    position: relative;
+    perspective: 1500px;
+}
+
+.page {
+    position: absolute;
+    background-color: white;
+    width: 450px;
+    height: 600px;
+    border-radius: 0 15px 15px 0;
+    margin-top: 10px;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+}
+
+.front-page,
+.back-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.back-page {
+    transform: rotateY(180deg);
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.back-cover {
+    z-index: 1;
+}
+
+/*Flash Cards*/
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+main#carousel {
+    width: 72.5vw;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    --items: 5;
+    --middle: 3;
+    pointer-events: none;
+}
+
+div.item {
+    position: absolute;
+    width: 315px;
+    height: 420px;
+    --r: calc(var(--position) - var(--offset));
+    --abs: max(calc(var(--r) * -1), var(--r));
+    transition: all 0.25s linear;
+    transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-300px * var(--r)));
+    z-index: calc((var(--position) - var(--abs)));
+}
+
+.arrow-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+
+.arrow-button.previous {
+    position: absolute;
+    left: 10px;
+}
+
+.arrow-button.next {
+    position: absolute;
+    right: 10px;
+}
+
+.arrow-button:hover {
+    transform: scale(1.5);
+    opacity: 0.8;
+}
+
+/* Picture Dictionaries*/
+.picture-dictionary-container {
+    text-align: center;
+    margin: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-image {
+    clip-path: polygon(5% 7%, 90% 7%, 90% 55%, 5% 55%);
+    height: 325px;
+    margin-top: -40px;
+}
+
+.question-image {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 70px;
+    margin-top: 30px;
+}
+
+.choices-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.choice-button {
+    padding: 10px 20px;
+    border: 2px solid #333;
+    background: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.choice-button:hover {
+    background: #333;
+    color: white;
+}
+
+.choice-button.correct {
+    background: #4caf50;
+    color: white;
+}
+
+.choice-button.incorrect {
+    background: #f44336;
+    color: white;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.popup {
+    text-align: center;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.result-image {
+    height: 550px;
+}
+
+.return-button {
+    margin-top: -30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+    background-color: #0056b3;
+}
+
+/* Spelling Game */
+.spelling-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-image-spelling {
+    clip-path: polygon(5% 0%, 75% 0%, 75% 55%, 5% 55%);
+    height: 300px;
+    margin-top: -20px;
+}
+
+.spelling-image {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.spelling-word {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.spelling-letter {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #333;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.spelling-letter.prefilled {
+    background-color: #787878;
+    cursor: default;
+}
+
+.spelling-letter:not(.prefilled):hover {
+    transform: scale(1.3);
+}
+
+.available-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.letter-button {
+    padding: 8px 13px;
+    border: 2px solid #333;
+    background: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.letter-button:hover {
+    transform: scale(1.3);
+}
