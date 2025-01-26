@@ -48,7 +48,7 @@ import fruitVeg3 from "./Payung-payungan.png";
 import fruitVeg4 from "./Sibuyas.png";
 import fruitVeg5 from "./peras.png";
 import fruitVeg6 from "./Apol.png";
-import fruitVeg7 from "./saging.png";
+import fruitVeg7 from "./Saging.png";
 import fruitVeg8 from "./ripolyu.png";
 import fruitVeg9 from "./carrot.png";
 import fruitVeg10 from "./mayis.png";
