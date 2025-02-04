@@ -90,7 +90,7 @@ function Dictionaries() {
 
     return (
         <div>
-            <button className="image-button goBack" onClick={handleGoBack}>
+            <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
                 <img src={goBack} alt="Go Back" className="goBack-image" />
             </button>
 
@@ -105,7 +105,7 @@ function Dictionaries() {
                 currentItem && (
                     <div className="picture-dictionary-container">
                         <img src={pictureDictionaries} alt="Picture Dictionaries" className="title-image" />
-                        <h3 style={{ marginTop: "-150px" }}>Score: {score}</h3>
+                        <h3 style={{ marginTop: "0px" }}>Score: {score}</h3>
                         <div className="question-container">
                             <img src={currentItem.image} alt="Image" className="question-image" />
                             <div className="choices-container">

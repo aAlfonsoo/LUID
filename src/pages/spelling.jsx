@@ -194,7 +194,7 @@ function Spelling() {
 
   return (
     <div>
-      <button className="image-button goBack" onClick={handleGoBack}>
+      <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
         <img src={goBack} alt="Go Back" className="goBack-image" />
       </button>
 
@@ -208,7 +208,7 @@ function Spelling() {
       ) : (
         <div className="spelling-container">
           <img src={spellingGames} alt="Spelling Games" className="title-image-spelling" />
-          <h3 style={{ marginTop: "-130px" }}>Score: {score}</h3>
+          <h3 style={{ marginTop: "5px" }}>Score: {score}</h3>
           <div className="image-container">
             <img src={words[currentWordIndex]?.image} alt="Image" className="spelling-image" />
           </div>

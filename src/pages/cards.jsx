@@ -74,7 +74,7 @@ function Cards() {
 
   return (
     <div>
-      <button className="image-button goBack" onClick={handleGoBack}>
+      <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
         <img src={goBack} alt="Go Back" className="goBack-image" />
       </button>
 

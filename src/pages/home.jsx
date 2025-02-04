@@ -3,7 +3,7 @@ import "../App.modules.css";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaPlay, FaPause } from "react-icons/fa";
-import { spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, singsing, pampanga, maranun, } from "../assets/images";
+import { rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, singsing, pampanga, maranun, } from "../assets/images";
 import { music1, music2, music3 } from "../assets/musics";
 
 function Home() {
@@ -29,6 +29,19 @@ function Home() {
     navigate('/dictionaries');
   };
 
+  const [selectedMusic, setSelectedMusic] = useState("music1");
+
+  const handleMusicChange = (e) => {
+    const newMusic = e.target.value;
+
+    // Pause the currently playing music
+    if (currentMusic && isPlaying && audioRefs[currentMusic]?.current) {
+      audioRefs[currentMusic].current.pause();
+    }
+
+    // Update selected music
+    setSelectedMusic(newMusic);
+  };
 
   const [currentMusic, setCurrentMusic] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -80,44 +93,131 @@ function Home() {
 
   return (
     <div>
-      <button className="image-button spelling-games">
-        <img src={spellingGames} alt="Spelling Games" className="game-image" onClick={redirectSpelling} />
-      </button>
-      <button className="image-button flash-cards" onClick={redirectCard}>
-        <img src={flashCards} alt="Flash Cards" className="game-image" />
-      </button>
-      <button className="image-button picture-dictionaries" onClick={redirectDictionary}>
-        <img src={pictureDictionaries} alt="Picture Dictionaries" className="game-image" />
-      </button>
-      <button className="image-button numbers" onClick={() => redirectTranslation('numbers')}>
-        <img src={numbers} alt="Numbers" className="game-image2" />
-      </button>
-      <button className="image-button phrases" onClick={() => redirectTranslation('phrases')}>
-        <img src={phrases} alt="Phrases" className="game-image2" />
-      </button>
-      <button className="image-button colours" onClick={() => redirectTranslation('colours')}>
-        <img src={colours} alt="Colours" className="game-image2" />
-      </button>
-      <button className="image-button animals" onClick={() => redirectTranslation('animals')}>
-        <img src={animals} alt="Animals" className="game-image2" />
-      </button>
-      <button className="image-button fruitsVeg" onClick={() => redirectTranslation('fruitsVeg')}>
-        <img src={fruitsVeg} alt="Phrases" className="game-image2" />
-      </button>
-      <button className="image-button genVocab" onClick={() => redirectTranslation('genVocab')}>
-        <img src={genVocab} alt="Phrases" className="game-image2" />
-      </button>
-      <button className="image-button book1" onClick={() => redirectBook('book1')}>
-        <img src={book1} alt="Book 1" className="game-image3" />
-      </button>
-      <button className="image-button book2" onClick={() => redirectBook('book2')}>
-        <img src={book2} alt="Book 2" className="game-image3" />
-      </button>
-      <button className="image-button book3" onClick={() => redirectBook('book3')}>
-        <img src={book3} alt="Book 3" className="game-image3" />
+      <div className="homeContainer">
+        {/* Translations Section */}
+        <div className="row">
+        <img src={rowTitle1} alt="Translations" className="rowTitle" />
+          <div className="button-container">
+            <button className="image-button numbers" onClick={() => redirectTranslation('numbers')}>
+              <img src={numbers} alt="Numbers" className="game-image2" />
+            </button>
+            <button className="image-button phrases" onClick={() => redirectTranslation('phrases')}>
+              <img src={phrases} alt="Phrases" className="game-image2-1" />
+            </button>
+            <button className="image-button colours" onClick={() => redirectTranslation('colours')}>
+              <img src={colours} alt="Colours" className="game-image2-2" />
+            </button>
+            <button className="image-button animals" onClick={() => redirectTranslation('animals')}>
+              <img src={animals} alt="Animals" className="game-image2" />
+            </button>
+            <button className="image-button fruitsVeg" onClick={() => redirectTranslation('fruitsVeg')}>
+              <img src={fruitsVeg} alt="Fruits & Vegetables" className="game-image2-4" />
+            </button>
+            <button className="image-button genVocab" onClick={() => redirectTranslation('genVocab')}>
+              <img src={genVocab} alt="General Vocabulary" className="game-image2-5" />
+            </button>
+          </div>
+        </div>
+        {/* Games Section */}
+        <div className="row2">
+        <img src={rowTitle2} alt="Games" className="rowTitle" />
+          <div className="button-container">
+            <button className="image-button spelling-games">
+              <img src={spellingGames} alt="Spelling Games" className="game-image" onClick={redirectSpelling} />
+            </button>
+            <button className="image-button flash-cards" onClick={redirectCard}>
+              <img src={flashCards} alt="Flash Cards" className="game-image-1" />
+            </button>
+            <button className="image-button picture-dictionaries" onClick={redirectDictionary}>
+              <img src={pictureDictionaries} alt="Picture Dictionaries" className="game-image-2" />
+            </button>
+          </div>
+        </div>
+        {/* Books Section */}
+        <div className="row3">
+        <img src={rowTitle3} alt="Books" className="rowTitle" />
+          <div className="button-container">
+            <button className="image-button book1" onClick={() => redirectBook('bookA')}>
+              <img src={book1} alt="Book 1" className="game-image3" />
+            </button>
+            <button className="image-button book2" onClick={() => redirectBook('bookB')}>
+              <img src={book2} alt="Book 2" className="game-image3" />
+            </button>
+            <button className="image-button book3" onClick={() => redirectBook('bookC')}>
+              <img src={book3} alt="Book 3" className="game-image3" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="row4">
+  <img src={rowTitle4} alt="Music" className="rowTitle" />
+  <div className="button-container">
+    {/* Wrap dropdown, button, and slider in a flex container */}
+    <div style={{ display: "flex", alignItems: "center", gap: "20px", marginTop: "15px" }}>
+      
+      {/* Dropdown to select music */}
+      <div style={{ position: "relative", width: "375px", marginLeft: "-420px",}}>
+        <select
+          value={selectedMusic}
+          onChange={handleMusicChange}
+          style={{
+            width: "100%",
+            padding: "10px",
+            fontSize: "16px",
+            borderRadius: "10px",
+            border: "2px solid #ffcccb",
+            backgroundColor: "#ffebcd", // Pastel Peach
+            color: "#333",
+            fontWeight: "bold",
+            cursor: "pointer",
+            outline: "none",
+            boxShadow: "2px 2px 8px rgba(0,0,0,0.2)",
+            appearance: "none",
+            textAlign: "center",
+          }}
+        >
+          <option value="music1" style={{ backgroundColor: "#FFD1DC" }}>🎵 atin cu pung singsing</option>
+          <option value="music2" style={{ backgroundColor: "#B5EAD7" }}>🎶 mekeni tuki ka, malaus ka pampanga!</option>
+          <option value="music3" style={{ backgroundColor: "#C9C9FF" }}>🎼 abak a maranun</option>
+        </select>
+      </div>
+
+      {/* Play/Pause Button */}
+      <button
+        onClick={() => playMusic(selectedMusic)}
+        className={`music-button ${currentMusic === selectedMusic && isPlaying ? "playing" : "paused"}`}
+        style={{
+          padding: "10px 15px",
+          borderRadius: "50%",
+          border: "none",
+          backgroundColor: "#b86588",
+          cursor: "pointer",
+          boxShadow: "2px 2px 8px rgba(0,0,0,0.2)",
+          fontSize: "18px",
+          marginLeft: "-26px",
+        }}
+      >
+        {currentMusic === selectedMusic && isPlaying ? <FaPause /> : <FaPlay />}
       </button>
 
-      <img src={singsing} className="singsing" />
+      {/* Slider for music progress */}
+      <input
+        type="range"
+        min="0"
+        max={audioRefs[selectedMusic]?.current?.duration || 0}
+        value={sliders[selectedMusic] || 0}
+        onChange={(e) => handleSliderChange(e, selectedMusic)}
+        className="custom-slider"
+        style={{
+          flex: "1", // Allow slider to grow
+          maxWidth: "400px",
+          marginLeft: "45px",
+        }}
+      />
+    </div>
+  </div>
+</div>
+      {/* <img src={singsing} className="singsing" />
       <img src={pampanga} className="pampanga" />
       <img src={maranun} className="maranun" />
 
@@ -191,7 +291,7 @@ function Home() {
             className="custom-slider"
           />
         </div>
-      </div>
+      </div> */}
 
       <audio
         ref={audioRefs.music1}

@@ -33,11 +33,11 @@ function Translations() {
       { tagalog: "Sampu", kapampangan: "Apulu", image: number10 },
     ],
     phrases: [
-      { tagalog: "Ano", kapampangan: "Nanu", image: phrase17 },
-      { tagalog: "Kailan", kapampangan: "Kapilan", image: phrase18 },
-      { tagalog: "Saan", kapampangan: "Nokarin", image: phrase19 },
-      { tagalog: "Magkano", kapampangan: "Magkanu", image: phrase9 },
-      { tagalog: "Taga saan ka", kapampangan: "Taga nu ka rin ka", image: phrase10 },
+      { tagalog: "Ano?", kapampangan: "Nanu?", image: phrase17 },
+      { tagalog: "Kailan?", kapampangan: "Kapilan?", image: phrase18 },
+      { tagalog: "Saan?", kapampangan: "Nokarin?", image: phrase19 },
+      { tagalog: "Magkano?", kapampangan: "Magkanu?", image: phrase9 },
+      { tagalog: "Taga saan ka?", kapampangan: "Taga nu ka rin ka?", image: phrase10 },
       { tagalog: "Nawawala ako", kapampangan: "Mawawala ku", image: phrase15 },
       { tagalog: "Hindi ko naiintindihan", kapampangan: "Ali ku aintindyan", image: phrase16 },
       { tagalog: "Magandang umaga", kapampangan: "Mayap a abak", image: phrase1 },
@@ -128,7 +128,7 @@ function Translations() {
 
   return (
     <div>
-      <button className="image-button goBack" onClick={handleGoBack}>
+      <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
         <img src={goBack} alt="Go Back" className="goBack-image" />
       </button>
       <img src={categoryTitleImage} alt="Translation Category Title" className="category-title-image" />

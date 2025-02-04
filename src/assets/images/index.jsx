@@ -114,8 +114,85 @@ import excellent from "./42.gif";
 import verygood from "./43.gif";
 import good from "./44.gif";
 import okay from "./45.png";
-
-
+import rowTitle1 from "./46.png";
+import rowTitle2 from "./47.png";
+import rowTitle3 from "./48.png";
+import rowTitle4 from "./49.png";
+import bookAcover from "./a0.jpg";
+import bookAcover2 from "./a00.jpg";
+import bookAcover3 from "./a000.jpg";
+import bookAcover4 from "./a0000.jpg";
+import bookA1 from "./a1.jpg";
+import bookA2 from "./a2.jpg";
+import bookA3 from "./a3.jpg";
+import bookA4 from "./a4.jpg";
+import bookA5 from "./a5.jpg";
+import bookA6 from "./a6.jpg";
+import bookA7 from "./a7.jpg";
+import bookA8 from "./a8.jpg";
+import bookA9 from "./a9.jpg";
+import bookA10 from "./a10.jpg";
+import bookA11 from "./a11.jpg";
+import bookA12 from "./a12.jpg";
+import bookA13 from "./a13.jpg";
+import bookA14 from "./a14.jpg";
+import bookA15 from "./a15.jpg";
+import bookA16 from "./a16.jpg";
+import bookA17 from "./a17.jpg";
+import bookA18 from "./a18.jpg";
+import bookA19 from "./a19.jpg";
+import bookBcover from "./b0.jpg";
+import bookBcover2 from "./b00.jpg";
+import bookBcover3 from "./b000.jpg";
+import bookBcover4 from "./b0000.jpg";
+import bookB1 from "./b1.jpg";
+import bookB2 from "./b2.jpg";
+import bookB3 from "./b3.jpg";
+import bookB4 from "./b4.jpg";
+import bookB5 from "./b5.jpg";
+import bookB6 from "./b6.jpg";
+import bookB7 from "./b7.jpg";
+import bookB8 from "./b8.jpg";
+import bookB9 from "./b9.jpg";
+import bookB10 from "./b10.jpg";
+import bookB11 from "./b11.jpg";
+import bookB12 from "./b12.jpg";
+import bookB13 from "./b13.jpg";
+import bookB14 from "./b14.jpg";
+import bookB15 from "./b15.jpg";
+import bookB16 from "./b16.jpg";
+import bookB17 from "./b17.jpg";
+import bookB18 from "./b18.jpg";
+import bookB19 from "./b19.jpg";
+import bookB20 from "./b20.jpg";
+import bookB21 from "./b21.jpg";
+import bookB22 from "./b22.jpg";
+import bookCcover from "./c0.jpg";
+import bookCcover2 from "./c00.jpg";
+import bookCcover3 from "./c000.jpg";
+import bookCcover4 from "./c0000.jpg";
+import bookC1 from "./c1.jpg";
+import bookC2 from "./c2.jpg";
+import bookC3 from "./c3.jpg";
+import bookC4 from "./c4.jpg";
+import bookC5 from "./c5.jpg";
+import bookC6 from "./c6.jpg";
+import bookC7 from "./c7.jpg";
+import bookC8 from "./c8.jpg";
+import bookC9 from "./c9.jpg";
+import bookC10 from "./c10.jpg";
+import bookC11 from "./c11.jpg";
+import bookC12 from "./c12.jpg";
+import bookC13 from "./c13.jpg";
+import bookC14 from "./c14.jpg";
+import bookC15 from "./c15.jpg";
+import bookC16 from "./c16.jpg";
+import bookC17 from "./c17.jpg";
+import bookC18 from "./c18.jpg";
+import bookC19 from "./c19.jpg";
+import bookC20 from "./c20.jpg";
+import bookC21 from "./c21.jpg";
+import bookC22 from "./c22.jpg";
 
 export {
   logo,
@@ -234,4 +311,83 @@ export {
   verygood,
   good,
   okay,
+  rowTitle1,
+  rowTitle2,
+  rowTitle3,
+  rowTitle4,
+  bookAcover,
+  bookAcover2,
+  bookAcover3,
+  bookAcover4,
+  bookA1,
+  bookA2,
+  bookA3,
+  bookA4,
+  bookA5,
+  bookA6,
+  bookA7,
+  bookA8,
+  bookA9,
+  bookA10,
+  bookA11,
+  bookA12,
+  bookA13,
+  bookA14,
+  bookA15,
+  bookA16,
+  bookA17,
+  bookA18,
+  bookA19,
+  bookBcover,
+  bookBcover2,
+  bookBcover3,
+  bookBcover4,
+  bookB1,
+  bookB2,
+  bookB3,
+  bookB4,
+  bookB5,
+  bookB6,
+  bookB7,
+  bookB8,
+  bookB9,
+  bookB10,
+  bookB11,
+  bookB12,
+  bookB13,
+  bookB14,
+  bookB15,
+  bookB16,
+  bookB17,
+  bookB18,
+  bookB19,
+  bookB20,
+  bookB21,
+  bookB22,
+  bookCcover,
+  bookCcover2,
+  bookCcover3,
+  bookCcover4,
+  bookC1,
+  bookC2,
+  bookC3,
+  bookC4,
+  bookC5,
+  bookC6,
+  bookC7,
+  bookC8,
+  bookC9,
+  bookC10,
+  bookC11,
+  bookC12,
+  bookC13,
+  bookC14,
+  bookC15,
+  bookC16,
+  bookC17,
+  bookC18,
+  bookC19,
+  bookC20,
+  bookC21,
+  bookC22,
 };
