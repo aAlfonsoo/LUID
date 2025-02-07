@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 body {
     overflow: hidden;
     margin: 0;
@@ -443,17 +445,40 @@ body {
 }
 
 .controls {
+    margin-left: 7.5px;
     margin-bottom: 0.7rem;
 }
 
 .bookButton {
-    background-color: #4173a5;
-    border: none;
-    color: white;
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
-    border-radius: 0px;
-    cursor: pointer;
+	position: relative;
+	font: inherit;
+	background-color: #007bff;
+	border: 0;
+	color: #fff;
+	border-radius: 1000em;
+	font-size: 1.4rem;
+	padding: 0.25em .5em;
+	font-weight: 600;
+	box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
+		0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
+		0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
+	transition: 0.25s ease;
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.bookButton:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.bookButton:active:not(:disabled) {
+	transform: translateY(0.3em);
+	box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+		0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
+		0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
 }
 
 button:disabled {
@@ -647,29 +672,52 @@ main#carousel {
     background: #f44336;
     color: white;
 }
+/**/
 
 .nav-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    transition: background 0.3s ease;
-}
-
-.nav-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    margin-top: 17.5px;
+	position: relative;
+	font: inherit;
+	background-color: rgb(26, 117, 26);
+	border: 0;
+	color: #ffffff;
+	border-radius: 0.3em;
+	font-size: 1.4rem;
+	padding: 0.25em 1em;
+	font-weight: 600;
+	box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
+		0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
+		0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
+	transition: 0.25s ease;
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .nav-button:hover:not(:disabled) {
-    background-color: #0056b3;
+    color: rgb(26, 117, 26);
+    background-color: #ffffff;
 }
 
+.nav-button:active:not(:disabled) {
+	transform: translateY(0.3em);
+    color: rgb(26, 117, 26);
+    background-color: #ffffff;
+	box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+		0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
+		0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
+}
+.nav-button:disabled {
+	background-color: #aaa;
+	cursor: not-allowed;
+}
+/**/
+
 .popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    transform: translateY(-20px);
     text-align: center;
     border-radius: 8px;
     margin: 20px auto;
@@ -681,22 +729,54 @@ main#carousel {
 }
 
 .return-button {
-    margin-top: -30px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 7px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+	position: relative;
+	font: inherit;
+	background-color: #007bff;
+	border: 0;
+	color: #fff;
+	border-radius: 0.3em;
+	font-size: 1.4rem;
+	padding: 0.25em 1em;
+	font-weight: 600;
+	box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
+		0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
+		0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
+	transition: 0.25s ease;
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .return-button:hover {
     background-color: #0056b3;
 }
 
+.return-button:active {
+	transform: translateY(0.3em);
+	box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+		0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
+		0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
+}
+
 /* Spelling Game */
+.spellingText {
+    font-family: 'Chewy', cursive;
+    font-size: 28px;
+    color: #d9d9d9;
+    
+    text-shadow: 
+        -1px -1px 1px black,  
+         1px -1px 1px black,
+        -1px  1px 1px black,
+         1px  1px 1px black; 
+}
+
+.spellingText2 {
+    font-family: 'Chewy', cursive;
+    font-size: 20px;
+    color: #34495e;
+}
+
 .spelling-container {
     font-family: Arial, sans-serif;
     display: flex;

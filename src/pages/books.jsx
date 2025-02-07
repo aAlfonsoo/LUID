@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { goBack, bookAcover, bookAcover2, bookAcover3, bookAcover4, bookA1, bookA2, bookA3, bookA4, bookA5, bookA6, bookA7, bookA8, bookA9, bookA10, bookA11, bookA12, bookA13, bookA14, bookA15, bookA16, bookA17, bookA18, bookA19, bookBcover, bookBcover2, bookBcover3, bookBcover4, bookB1, bookB2, bookB3, bookB4, bookB5, bookB6, bookB7, bookB8, bookB9, bookB10, bookB11, bookB12, bookB13, bookB14, bookB15, bookB16, bookB17, bookB18, bookB19, bookB20, bookB21, bookB22, bookCcover, bookCcover2, bookCcover3, bookCcover4, bookC1, bookC2, bookC3, bookC4, bookC5, bookC6, bookC7, bookC8, bookC9, bookC10, bookC11, bookC12, bookC13, bookC14, bookC15, bookC16, bookC17, bookC18, bookC19, bookC20, bookC21, bookC22 } from "../assets/images";
+import { spellingTutorial, goBack, bookAcover, bookAcover2, bookAcover3, bookAcover4, bookA1, bookA2, bookA3, bookA4, bookA5, bookA6, bookA7, bookA8, bookA9, bookA10, bookA11, bookA12, bookA13, bookA14, bookA15, bookA16, bookA17, bookA18, bookA19, bookBcover, bookBcover2, bookBcover3, bookBcover4, bookB1, bookB2, bookB3, bookB4, bookB5, bookB6, bookB7, bookB8, bookB9, bookB10, bookB11, bookB12, bookB13, bookB14, bookB15, bookB16, bookB17, bookB18, bookB19, bookB20, bookB21, bookB22, bookCcover, bookCcover2, bookCcover3, bookCcover4, bookC1, bookC2, bookC3, bookC4, bookC5, bookC6, bookC7, bookC8, bookC9, bookC10, bookC11, bookC12, bookC13, bookC14, bookC15, bookC16, bookC17, bookC18, bookC19, bookC20, bookC21, bookC22 } from "../assets/images";
 import "../App.modules.css";
 
 const Books = () => {
@@ -12,7 +12,7 @@ const Books = () => {
         navigate(-1);
     };
 
-    const pagesData = { 
+    const pagesData = {
         bookA: [
             { frontImage: bookAcover, backImage: bookAcover2 },
             { frontImage: bookAcover3, backImage: bookAcover4 },
@@ -25,7 +25,7 @@ const Books = () => {
             { frontImage: bookA13, backImage: bookA14 },
             { frontImage: bookA15, backImage: bookA16 },
             { frontImage: bookA17, backImage: bookA18 },
-            { frontImage: bookA19, backImage: "back.jpg" },
+            { frontImage: bookA19, backImage: bookA19 },
         ],
         bookB: [
             { frontImage: bookBcover, backImage: bookBcover2 },
@@ -99,11 +99,25 @@ const Books = () => {
                         style={{ zIndex: zIndexes[index] }}
                     >
                         <div className="front-page">
-                            <img src={pageContent.frontImage} alt={`Page ${index + 1}`} />
+                            {pageContent.frontImage?.endsWith(".mp4") ? (
+                                <video controls className="front-page">
+                                    <source src={pageContent.frontImage} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            ) : (
+                                <img src={pageContent.frontImage} alt={`Page ${index}`} />
+                            )}
                         </div>
-                        <div className="back-page">
-                            <img src={pageContent.backImage} alt={`Page ${index + index}`} />
-                        </div>
+                            {pageContent.backImage?.endsWith(".mp4") ? (
+                                <video controls className="back-page">
+                                    <source src={pageContent.backImage} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            ) : (
+                                <div className="back-page">
+                                <img src={pageContent.backImage} alt={`Page ${index}`} />
+                                </div>
+                            )}
                     </div>
                 ))}
                 <div
@@ -113,10 +127,10 @@ const Books = () => {
             </div>
             <div className="controls">
                 <button onClick={handlePrev} disabled={page === 0} className="bookButton">
-                    Previous
+                    🢀
                 </button>
                 <button onClick={handleNext} disabled={page === bookPages.length} className="bookButton">
-                    Next
+                    🢂
                 </button>
             </div>
         </div>

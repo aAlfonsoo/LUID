@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { goBack, pictureDictionaries, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, color1, color2, color3, color4, color7, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal12, fruitVeg1, fruitVeg2, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg10, genVocab1, genVocab2, genVocab3, genVocab6, genVocab7, genVocab9, genVocab11 } from "../assets/images";
+import { dictionaryTutorial, goBack, pictureDictionaries, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, color1, color2, color3, color4, color7, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal12, fruitVeg1, fruitVeg2, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg10, genVocab1, genVocab2, genVocab3, genVocab6, genVocab7, genVocab9, genVocab11 } from "../assets/images";
 import "../App.modules.css";
 
 function Dictionaries() {
@@ -53,14 +53,14 @@ function Dictionaries() {
     const [selectedChoice, setSelectedChoice] = useState(null);
     const [score, setScore] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
-
+    const [showTutorial, setShowTutorial] = useState(true);
 
     useEffect(() => {
         const shuffled = [...pictureDictionary]
             .sort(() => Math.random() - 0.5)
             .slice(0, 25);
         setQuestions(shuffled);
-    }, []);
+    }, [showTutorial]); // Re-run when showTutorial changes
 
     const currentItem = questions[currentIndex];
 
@@ -94,17 +94,26 @@ function Dictionaries() {
                 <img src={goBack} alt="Go Back" className="goBack-image" />
             </button>
 
-            {showPopup ? (
-                <div className="popup">
-                    <img src={getResultImage()} alt="Congrats!" className="result-image" />
-                    <button className="return-button" onClick={() => navigate(-1)}>
-                        Return to Home
-                    </button>
-                </div>
-            ) : (
-                currentItem && (
-                    <div className="picture-dictionary-container">
-                        <img src={pictureDictionaries} alt="Picture Dictionaries" className="title-image" />
+            {showTutorial ? (
+        <div className="popup">
+                <h2 className="spellingText">Malaus ka king diksyunaryung letratu!</h2>
+                <video  height="420" controls>
+                <source src={dictionaryTutorial} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <p className="spellingText2">Instructions: Multiple Choice, choose the words that best represents the image.</p>
+                <button className="return-button" onClick={() => setShowTutorial(false)}>
+                  Start Game
+                </button>
+              </div>
+      ) : showPopup ? (
+        <div className="popup">
+          <img src={getResultImage()} alt="Congrats!" className="result-image" />
+          <button className="return-button" onClick={() => navigate(-1)}>Return to Home</button>
+        </div>
+      ) : (
+        <div className="picture-dictionary-container">
+          <img src={pictureDictionaries} alt="Picture Dictionaries" className="title-image" />
                         <h3 style={{ marginTop: "0px" }}>Score: {score}</h3>
                         <div className="question-container">
                             <img src={currentItem.image} alt="Image" className="question-image" />
@@ -137,9 +146,9 @@ function Dictionaries() {
                                 {currentIndex === questions.length - 1 ? "Finish Quiz" : "Next"}
                             </button>
                         </div>
-                    </div>
-                )
-            )}
+        </div>
+      )}
+
         </div>
     );
 }

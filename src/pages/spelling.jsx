@@ -37,6 +37,7 @@ import {
   genVocab15,
   genVocab16,
   genVocab17,
+  spellingTutorial,
 } from "../assets/images";
 import "../App.modules.css";
 
@@ -90,52 +91,65 @@ function Spelling() {
   const [score, setScore] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [prefilledIndexes, setPrefilledIndexes] = useState([]);
+  const [showTutorial, setShowTutorial] = useState(true);
 
   useEffect(() => {
-    const shuffledWords = [...allWords].sort(() => Math.random() - 0.5);
-    const selectedWords = shuffledWords.slice(0, 5); // Select 5 random words
-    setWords(selectedWords);
-
-    const firstWord = selectedWords[0].word;
-    initializeGame(firstWord);
-  }, []);
+    if (!showTutorial) {
+      const shuffledWords = [...allWords].sort(() => Math.random() - 0.5);
+      const selectedWords = shuffledWords.slice(0, 5); // Select 5 random words
+      setWords(selectedWords);
+  
+      const firstWord = selectedWords[0].word;
+      initializeGame(firstWord);
+    }
+  }, [showTutorial]); // Re-run when showTutorial changes
 
   const initializeGame = (word) => {
     const wordLength = word.length;
-
-    // Determine prefilled letters
-    const minPrefilled = 2;
-    const maxPrefilled = Math.floor(wordLength / 2);
-    const numPrefilled =
-      Math.floor(Math.random() * (maxPrefilled - minPrefilled + 1)) + minPrefilled;
-
-    const tempPrefilledIndexes = [];
-    while (tempPrefilledIndexes.length < numPrefilled) {
+  
+    // Determine missing letters (at most 3, at least 1)
+    const numMissing = Math.floor(Math.random() * 3) + 1; // Randomly choose 1, 2, or 3
+    const tempMissingIndexes = [];
+  
+    while (tempMissingIndexes.length < numMissing) {
       const randIndex = Math.floor(Math.random() * wordLength);
-      if (!tempPrefilledIndexes.includes(randIndex)) {
-        tempPrefilledIndexes.push(randIndex);
+      if (!tempMissingIndexes.includes(randIndex)) {
+        tempMissingIndexes.push(randIndex);
       }
     }
-
-    setPrefilledIndexes(tempPrefilledIndexes);
-
-    // Generate random choices
-    const tempLetters = [...letters];
+  
+    setPrefilledIndexes(
+      word.split("").map((_, index) => (tempMissingIndexes.includes(index) ? null : index))
+    );
+  
+    // Extract missing letters
     const correctLetters = word.split("");
-
-    let randomChoices = [...correctLetters];
-    while (randomChoices.length < wordLength + 2) {
+    const missingLetters = correctLetters.filter((_, index) =>
+      tempMissingIndexes.includes(index)
+    );
+  
+    // Determine extra random letters
+    const extraLetterCount = numMissing <= 2 ? 2 : 1;
+    const tempLetters = [...letters];
+    let extraChoices = [];
+  
+    while (extraChoices.length < extraLetterCount) {
       const randomLetter =
         tempLetters[Math.floor(Math.random() * tempLetters.length)];
-      if (!randomChoices.includes(randomLetter)) {
-        randomChoices.push(randomLetter);
+      if (!correctLetters.includes(randomLetter) && !extraChoices.includes(randomLetter)) {
+        extraChoices.push(randomLetter);
       }
     }
-
-    setAvailableLetters(randomChoices.sort(() => Math.random() - 0.5));
+  
+    // Combine and shuffle choices
+    const randomChoices = [...missingLetters, ...extraChoices].sort(
+      () => Math.random() - 0.5
+    );
+  
+    setAvailableLetters(randomChoices);
     setUserInput(
-      word.split("").map((letter, index) =>
-        tempPrefilledIndexes.includes(index) ? letter : "_"
+      correctLetters.map((letter, index) =>
+        tempMissingIndexes.includes(index) ? "_" : letter
       )
     );
   };
@@ -198,12 +212,22 @@ function Spelling() {
         <img src={goBack} alt="Go Back" className="goBack-image" />
       </button>
 
-      {showPopup ? (
+      {showTutorial ? (
+        <div className="popup">
+        <h2 className="spellingText">Malaus ka king pamagleletrang piyalung!</h2>
+        <video  height="420" controls>
+        <source src={spellingTutorial} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <p className="spellingText2">Instructions: Fill in the missing letters to complete the words that best represents the image.</p>
+        <button className="return-button" onClick={() => setShowTutorial(false)}>
+          Start Game
+        </button>
+      </div>
+      ) : showPopup ? (
         <div className="popup">
           <img src={getResultImage()} alt="Congrats!" className="result-image" />
-          <button className="return-button" onClick={() => navigate(-1)}>
-            Return to Home
-          </button>
+          <button className="return-button" onClick={() => navigate(-1)}>Return to Home</button>
         </div>
       ) : (
         <div className="spelling-container">
