@@ -3,7 +3,7 @@ import "../App.modules.css";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaPlay, FaPause } from "react-icons/fa";
-import { rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, singsing, pampanga, maranun, } from "../assets/images";
+import { rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, } from "../assets/images";
 import { music1, music2, music3, music4, music5, music6, music7, music8, music9, music10, music11, music12, music13, } from "../assets/musics";
 
 function Home() {

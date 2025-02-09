@@ -195,6 +195,7 @@ import bookC21 from "./c21.jpg";
 import bookC22 from "./c22.jpg";
 import spellingTutorial from "./spellingTutorial.mp4";
 import dictionaryTutorial from "./dictionaryTutorial.mp4";
+import speaker from "./speaker.png";
 
 
 export {
@@ -267,7 +268,7 @@ export {
   color2,
   color3,
   color4,
-  color5,
+  color5, 
   color6,
   color7,
   color8,
@@ -395,4 +396,5 @@ export {
   bookC22,
   spellingTutorial,
   dictionaryTutorial,
+  speaker,
 };
