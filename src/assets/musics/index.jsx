@@ -53,7 +53,7 @@ import numberS4 from "./apat.m4a";
 import numberS5 from "./Lima.m4a";
 import numberS6 from "./Anam.m4a";
 import numberS7 from "./Pitu.m4a";
-import numberS8 from "./walu.m4a";
+import numberS8 from "./Walu.m4a";
 import numberS9 from "./siam.m4a";
 import numberS10 from "./Apulu.m4a";
 import colorS1 from "./mairo.m4a";
