@@ -61,7 +61,7 @@ import colorS2 from "./tayum.m4a";
 import colorS3 from "./aluntianng.m4a";
 import colorS4 from "./kuliawan.m4a";
 import colorS5 from "./diwa.m4a";
-import colorS6 from "./Komanggi.m4a";
+import colorS6 from "./komanggi.m4a";
 import colorS7 from "./ubi.m4a";
 import colorS8 from "./abu.m4a";
 import colorS9 from "./dilo.m4a";
