@@ -25,7 +25,6 @@ const Books = () => {
             { frontImage: bookA13, backImage: bookA14 },
             { frontImage: bookA15, backImage: bookA16 },
             { frontImage: bookA17, backImage: bookA18 },
-            { frontImage: bookA19, backImage: bookA19 },
         ],
         bookB: [
             { frontImage: bookBcover, backImage: bookBcover2 },

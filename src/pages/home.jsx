@@ -3,30 +3,22 @@ import "../App.modules.css";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaPlay, FaPause } from "react-icons/fa";
-import { rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, } from "../assets/images";
+import { translationsIcon, gamesIcon, booksIcon, rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, } from "../assets/images";
 import { music1, music2, music3, music4, music5, music6, music7, music8, music9, music10, music11, music12, music13, } from "../assets/musics";
 
 function Home() {
   const navigate = useNavigate();
 
-  const redirectTranslation = (category) => {
-    navigate('/translations', { state: { category } });
+  const redirectTranslation = () => {
+    navigate('/translationsNav');
   };
 
-  const redirectBook = (category) => {
-    navigate('/books', { state: { category } });
+  const redirectGame = () => {
+    navigate('/gamesNav');
   };
 
-  const redirectCard = () => {
-    navigate('/cards');
-  };
-
-  const redirectSpelling = () => {
-    navigate('/spelling');
-  };
-
-  const redirectDictionary = () => {
-    navigate('/dictionaries');
+  const redirectBook = () => {
+    navigate('/booksNav');
   };
 
   const [selectedMusic, setSelectedMusic] = useState("music1");
@@ -113,62 +105,26 @@ function Home() {
 
   return (
     <div>
-      <div className="homeContainer">
+      <div className="homehomeContainer">
         {/* Translations Section */}
-        <div className="row">
-          <img src={rowTitle1} alt="Translations" className="rowTitle" />
-          <div className="button-container">
-            <button className="image-button numbers" onClick={() => redirectTranslation('numbers')}>
-              <img src={numbers} alt="Numbers" className="game-image2" />
-            </button>
-            <button className="image-button phrases" onClick={() => redirectTranslation('phrases')}>
-              <img src={phrases} alt="Phrases" className="game-image2-1" />
-            </button>
-            <button className="image-button colours" onClick={() => redirectTranslation('colours')}>
-              <img src={colours} alt="Colours" className="game-image2-2" />
-            </button>
-            <button className="image-button animals" onClick={() => redirectTranslation('animals')}>
-              <img src={animals} alt="Animals" className="game-image2" />
-            </button>
-            <button className="image-button fruitsVeg" onClick={() => redirectTranslation('fruitsVeg')}>
-              <img src={fruitsVeg} alt="Fruits & Vegetables" className="game-image2-4" />
-            </button>
-            <button className="image-button genVocab" onClick={() => redirectTranslation('genVocab')}>
-              <img src={genVocab} alt="General Vocabulary" className="game-image2-5" />
+          <div className="buttonIcon-container">
+            <button className="image-button translationz" onClick={redirectTranslation}>
+              <img src={translationsIcon} alt="Translations" className="homeButtonImage" />
             </button>
           </div>
-        </div>
         {/* Games Section */}
-        <div className="row2">
-          <img src={rowTitle2} alt="Games" className="rowTitle" />
-          <div className="button-container">
-            <button className="image-button spelling-games">
-              <img src={spellingGames} alt="Spelling Games" className="game-image" onClick={redirectSpelling} />
-            </button>
-            <button className="image-button flash-cards" onClick={redirectCard}>
-              <img src={flashCards} alt="Flash Cards" className="game-image-1" />
-            </button>
-            <button className="image-button picture-dictionaries" onClick={redirectDictionary}>
-              <img src={pictureDictionaries} alt="Picture Dictionaries" className="game-image-2" />
+          <div className="buttonIcon-container">
+            <button className="image-button gamez">
+              <img src={gamesIcon} alt="Games" className="homeButtonImage" onClick={redirectGame} />
             </button>
           </div>
-        </div>
         {/* Books Section */}
-        <div className="row3">
-          <img src={rowTitle3} alt="Books" className="rowTitle" />
-          <div className="button-container">
-            <button className="image-button book1" onClick={() => redirectBook('bookA')}>
-              <img src={book1} alt="Book 1" className="game-image3" />
-            </button>
-            <button className="image-button book2" onClick={() => redirectBook('bookB')}>
-              <img src={book2} alt="Book 2" className="game-image3" />
-            </button>
-            <button className="image-button book3" onClick={() => redirectBook('bookC')}>
-              <img src={book3} alt="Book 3" className="game-image3" />
+          <div className="buttonIcon-container">
+            <button className="image-button bookz" onClick={redirectBook}>
+              <img src={booksIcon} alt="Books" className="homeButtonImage" />
             </button>
           </div>
         </div>
-      </div>
       <div className="row4">
         <img src={rowTitle4} alt="Music" className="rowTitle" />
         <div className="button-container">

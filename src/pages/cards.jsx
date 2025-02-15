@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { speaker, dictionaryTutorial, goBack, flashCards, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, color1, color2, color3, color4, color7, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal12, fruitVeg1, fruitVeg2, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg10, genVocab1, genVocab2, genVocab3, genVocab6, genVocab7, genVocab9, genVocab11 } from "../assets/images";
+import { confetti, speaker, dictionaryTutorial, goBack, flashCards, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, color1, color2, color3, color4, color7, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal12, fruitVeg1, fruitVeg2, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg10, genVocab1, genVocab2, genVocab3, genVocab6, genVocab7, genVocab9, genVocab11 } from "../assets/images";
 import "../App.modules.css";
 import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, phraseS1, phraseS2, phraseS3, phraseS4, phraseS5, phraseS6, phraseS7, phraseS8, phraseS9, phraseS10, phraseS11, phraseS12, phraseS13, phraseS14, phraseS15, phraseS16, phraseS17, phraseS18, phraseS19, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
 
@@ -17,7 +17,7 @@ function Cards() {
       word: "Asu",
       choices: [animalS2, animalS3, animalS1],
       correctAnswer: animalS1,
-  },
+    },
     {
       id: 2,
       color: "#ff70a6",
@@ -60,7 +60,7 @@ function Cards() {
       image: animal6,
       cardName: "Dangki",
       word: "Dangki",
-      choices: [animalS11, "animalS6", animalS7],
+      choices: [animalS11, animalS6, animalS7],
       correctAnswer: animalS6,
     },
     {
@@ -211,6 +211,7 @@ function Cards() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null); // Store currently playing audio
   const [bgAudio] = useState(new Audio(bgMusic));
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     const shuffled = [...pictureDictionary].sort(() => Math.random() - 0.5).slice(0, 10); // Limit to 10 items
@@ -222,10 +223,10 @@ function Cards() {
       bgAudio.play().catch((err) => console.error("Audio playback failed:", err));
       // Cleanup function: stop audio when leaving
       return () => {
-          bgAudio.pause();
-          bgAudio.currentTime = 0;
+        bgAudio.pause();
+        bgAudio.currentTime = 0;
       };
-  }
+    }
   }, [showTutorial]);
 
   const currentItem = questions[currentIndex];
@@ -237,22 +238,22 @@ function Cards() {
       currentAudio.currentTime = 0;
       setIsPlaying(false);
     }
-  
+
     // Lower the background music volume
     bgAudio.volume = 0.0040; // Adjust to a lower value
-  
+
     const audio = new Audio(choice);
     setCurrentAudio(audio);
     setIsPlaying(true);
     setSelectedChoice(choice);
-  
+
     audio.play();
     audio.onended = () => {
       setIsPlaying(false);
       bgAudio.volume = 0.030; // Restore original volume
     };
   };
-  
+
 
   // Finalize answer when submitting
   const handleFinalize = () => {
@@ -260,6 +261,11 @@ function Cards() {
       setIsLocked(true);
       if (selectedChoice === currentItem.correctAnswer) {
         setScore((prevScore) => prevScore + 1);
+        // Show confetti for a specific time (e.g., 3 seconds)
+        setShowConfetti(true);
+        setTimeout(() => {
+          setShowConfetti(false);
+        }, 1900); // Adjust time as needed
       }
     }
   };
@@ -289,7 +295,23 @@ function Cards() {
       <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
         <img src={goBack} alt="Go Back" className="goBack-image" />
       </button>
-
+      {showConfetti && (
+        <img
+          src={confetti}
+          alt="Confetti Celebration"
+          className="confetti-gif"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "45%",
+            height: "45%",
+            zIndex: 10,
+            pointerEvents: "none",
+          }}
+        />
+      )}
       {showTutorial ? (
         <div className="popup">
           <h2 className="spellingText">Malaus ka king kards!</h2>
@@ -308,7 +330,14 @@ function Cards() {
       ) : (
         <div className="picture-dictionary-container">
           <img src={flashCards} alt="Picture Dictionaries" className="title-image2" />
-          <h3 style={{ marginTop: "0px" }}>Score: {score}</h3>
+          <h3 style={{
+            marginTop: "0px",
+            marginBottom: "0px",
+            fontSize: "32px",
+            fontWeight: "bold",
+          }}>
+            Score: {score}
+          </h3>
           <div className="question-container">
             <div key={currentItem.id} className="item" style={{ backgroundColor: currentItem.color }}>
               <img src={currentItem.image} alt={currentItem.cardName} className="cardImage" />

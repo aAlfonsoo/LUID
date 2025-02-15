@@ -39,6 +39,7 @@ import {
   genVocab17,
   spellingTutorial,
   speaker,
+  confetti,
 } from "../assets/images";
 import "../App.modules.css";
 import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, phraseS1, phraseS2, phraseS3, phraseS4, phraseS5, phraseS6, phraseS7, phraseS8, phraseS9, phraseS10, phraseS11, phraseS12, phraseS13, phraseS14, phraseS15, phraseS16, phraseS17, phraseS18, phraseS19, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
@@ -48,7 +49,7 @@ function Spelling() {
   const handleGoBack = () => {
     navigate(-1);
   };
-
+  const { category } = location.state || {};
   // Initialize words data
   const allWords = [
     { word: "APULU", image: number10, sound: numberS10 },
@@ -81,7 +82,7 @@ function Spelling() {
     { word: "TANAMAN", image: genVocab14, sound: genVocabS14 },
     { word: "LAPIS", image: genVocab13, sound: genVocabS13 },
     { word: "DIARYU", image: genVocab12, sound: genVocabS12 },
-];
+  ];
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); // Letters available for selection
 
@@ -96,6 +97,7 @@ function Spelling() {
   const [showTutorial, setShowTutorial] = useState(true);
   const [bgAudio] = useState(new Audio(bgMusic));
   const [currentAudio, setCurrentAudio] = useState(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     if (!showTutorial) {
@@ -103,15 +105,15 @@ function Spelling() {
       const shuffledWords = [...allWords].sort(() => Math.random() - 0.5);
       const selectedWords = shuffledWords.slice(0, 5); // Select 5 random words
       setWords(selectedWords);
-  
+
       const firstWord = selectedWords[0].word;
       initializeGame(firstWord);
-  
+
       // Play background music
       bgAudio.loop = true;
       bgAudio.volume = 0.030; // Adjust volume if needed
       bgAudio.play().catch((err) => console.error("Audio playback failed:", err));
-  
+
       // Cleanup function: stop audio when leaving
       return () => {
         bgAudio.pause();
@@ -119,25 +121,25 @@ function Spelling() {
       };
     }
   }, [showTutorial]); // Runs when showTutorial changes
-  
+
   const playAudio = (audioSrc) => {
     if (!audioSrc) return; // Prevent errors if no audio source exists
-  
+
     // Stop any currently playing audio
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
-  
+
     // Lower background music volume
     if (bgAudio) {
       bgAudio.volume = 0.004; // Reduce volume
     }
-  
+
     // Create new audio instance
     const audio = new Audio(audioSrc);
     audio.play().catch((err) => console.error("Audio playback failed:", err));
-  
+
     // Restore background music volume when audio ends
     audio.onended = () => {
       if (bgAudio) {
@@ -145,39 +147,39 @@ function Spelling() {
       }
       setCurrentAudio(null);
     };
-  
+
     setCurrentAudio(audio);
   };
 
   const initializeGame = (word) => {
     const wordLength = word.length;
-  
+
     // Determine missing letters (at most 3, at least 1)
     const numMissing = Math.floor(Math.random() * 3) + 1; // Randomly choose 1, 2, or 3
     const tempMissingIndexes = [];
-  
+
     while (tempMissingIndexes.length < numMissing) {
       const randIndex = Math.floor(Math.random() * wordLength);
       if (!tempMissingIndexes.includes(randIndex)) {
         tempMissingIndexes.push(randIndex);
       }
     }
-  
+
     setPrefilledIndexes(
       word.split("").map((_, index) => (tempMissingIndexes.includes(index) ? null : index))
     );
-  
+
     // Extract missing letters
     const correctLetters = word.split("");
     const missingLetters = correctLetters.filter((_, index) =>
       tempMissingIndexes.includes(index)
     );
-  
+
     // Determine extra random letters
     const extraLetterCount = numMissing <= 2 ? 2 : 1;
     const tempLetters = [...letters];
     let extraChoices = [];
-  
+
     while (extraChoices.length < extraLetterCount) {
       const randomLetter =
         tempLetters[Math.floor(Math.random() * tempLetters.length)];
@@ -185,12 +187,12 @@ function Spelling() {
         extraChoices.push(randomLetter);
       }
     }
-  
+
     // Combine and shuffle choices
     const randomChoices = [...missingLetters, ...extraChoices].sort(
       () => Math.random() - 0.5
     );
-  
+
     setAvailableLetters(randomChoices);
     setUserInput(
       correctLetters.map((letter, index) =>
@@ -233,7 +235,14 @@ function Spelling() {
     const word = userInput.join("");
     if (word === words[currentWordIndex].word) {
       setScore((prev) => prev + 1);
+
+      // Show confetti for a specific time (e.g., 3 seconds)
+      setShowConfetti(true);
+      setTimeout(() => {
+        setShowConfetti(false);
+      }, 1900); // Adjust time as needed
     }
+
     if (currentWordIndex < words.length - 1) {
       const nextIndex = currentWordIndex + 1;
       setCurrentWordIndex(nextIndex);
@@ -256,19 +265,35 @@ function Spelling() {
       <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
         <img src={goBack} alt="Go Back" className="goBack-image" />
       </button>
-
+      {showConfetti && (
+        <img
+          src={confetti}
+          alt="Confetti Celebration"
+          className="confetti-gif"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "45%",
+            height: "45%",
+            zIndex: 10,
+            pointerEvents: "none",
+          }}
+        />
+      )}
       {showTutorial ? (
         <div className="popup">
-        <h2 className="spellingText">Malaus ka king pamagleletrang piyalung!</h2>
-        <video  height="420" controls>
-        <source src={spellingTutorial} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <p className="spellingText2">Instructions: Fill in the missing letters to complete the words that best represents the image.</p>
-        <button className="return-button" onClick={() => setShowTutorial(false)}>
-          Start Game
-        </button>
-      </div>
+          <h2 className="spellingText">Malaus ka king pamagleletrang piyalung!</h2>
+          <video height="420" controls>
+            <source src={spellingTutorial} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p className="spellingText2">Instructions: Fill in the missing letters to complete the words that best represents the image.</p>
+          <button className="return-button" onClick={() => setShowTutorial(false)}>
+            Start Game
+          </button>
+        </div>
       ) : showPopup ? (
         <div className="popup">
           <img src={getResultImage()} alt="Congrats!" className="result-image" />
@@ -277,15 +302,22 @@ function Spelling() {
       ) : (
         <div className="spelling-container">
           <img src={spellingGames} alt="Spelling Games" className="title-image-spelling" />
-          <h3 style={{ marginTop: "5px" }}>Score: {score}</h3>
+          <h3 style={{
+            marginTop: "0px",
+            marginBottom: "0px",
+            fontSize: "32px",
+            fontWeight: "bold",
+          }}>
+            Score: {score}
+          </h3>
           <div className="image-container">
             <img src={words[currentWordIndex]?.image} alt="Item Image" className="spelling-image" />
-            <img 
-  src={speaker} 
-  alt="Play Sound" 
-  className="speaker-icon" 
-  onClick={() => playAudio(words[currentWordIndex]?.sound)}
-/>
+            <img
+              src={speaker}
+              alt="Play Sound"
+              className="speaker-icon"
+              onClick={() => playAudio(words[currentWordIndex]?.sound)}
+            />
 
           </div>
           <div className="spelling-word">

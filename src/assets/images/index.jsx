@@ -196,6 +196,10 @@ import bookC22 from "./c22.jpg";
 import spellingTutorial from "./spellingTutorial.mp4";
 import dictionaryTutorial from "./dictionaryTutorial.mp4";
 import speaker from "./speaker.png";
+import translationsIcon from "./52.png";
+import gamesIcon from "./53.png";
+import booksIcon from "./54.png";
+import confetti from "./confetti.gif";
 
 
 export {
@@ -397,4 +401,8 @@ export {
   spellingTutorial,
   dictionaryTutorial,
   speaker,
+  translationsIcon,
+  gamesIcon,
+  booksIcon,
+  confetti,
 };

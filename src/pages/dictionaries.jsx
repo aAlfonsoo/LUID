@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { dictionaryTutorial, goBack, pictureDictionaries, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, color1, color2, color3, color4, color7, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal12, fruitVeg1, fruitVeg2, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg10, genVocab1, genVocab2, genVocab3, genVocab6, genVocab7, genVocab9, genVocab11 } from "../assets/images";
+import { confetti, dictionaryTutorial, goBack, pictureDictionaries, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, color1, color2, color3, color4, color7, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal12, fruitVeg1, fruitVeg2, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg10, genVocab1, genVocab2, genVocab3, genVocab6, genVocab7, genVocab9, genVocab11 } from "../assets/images";
 import "../App.modules.css";
 import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, phraseS1, phraseS2, phraseS3, phraseS4, phraseS5, phraseS6, phraseS7, phraseS8, phraseS9, phraseS10, phraseS11, phraseS12, phraseS13, phraseS14, phraseS15, phraseS16, phraseS17, phraseS18, phraseS19, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
 
@@ -40,7 +40,7 @@ function Dictionaries() {
         { id: 27, word: "Saging", image: fruitVeg7, sound: fruitVegS7, choices: ["Peras", "Apol", "Mais", "Saging"], correctAnswer: "Saging" },
         { id: 28, word: "Mais", image: fruitVeg10, sound: fruitVegS10, choices: ["Saging", "Mais", "Apol", "Peras"], correctAnswer: "Mais" }
     ];
-    
+
 
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,7 +50,8 @@ function Dictionaries() {
     const [showTutorial, setShowTutorial] = useState(true);
     const [bgAudio] = useState(new Audio(bgMusic));
     const [currentAudio, setCurrentAudio] = useState(null);
-    
+    const [showConfetti, setShowConfetti] = useState(false);
+
     useEffect(() => {
         setQuestions([...pictureDictionary].sort(() => Math.random() - 0.5).slice(0, 15));
         if (!showTutorial) {
@@ -63,22 +64,27 @@ function Dictionaries() {
             };
         }
     }, [showTutorial]);
-    
+
     const currentItem = questions[currentIndex];
-    
+
     const handleChoiceSelection = (choice) => {
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0; // Reset the previous audio
         }
-    
+
         setSelectedChoice(choice);
         if (choice === currentItem.correctAnswer) {
             setScore((prevScore) => prevScore + 1);
+            // Show confetti for a specific time (e.g., 3 seconds)
+            setShowConfetti(true);
+            setTimeout(() => {
+                setShowConfetti(false);
+            }, 1900); // Adjust time as needed
         }
-    
+
         bgAudio.volume = 0.004; // Lower background music volume
-    
+
         const soundEffect = new Audio(currentItem.sound);
         setCurrentAudio(soundEffect); // Store the new audio reference
         soundEffect.play();
@@ -87,7 +93,7 @@ function Dictionaries() {
             setCurrentAudio(null); // Clear the reference when the sound ends
         };
     };
-    
+
     const handleNext = () => {
         if (currentIndex < questions.length - 1) {
             setCurrentIndex((prevIndex) => prevIndex + 1);
@@ -96,7 +102,7 @@ function Dictionaries() {
             setShowPopup(true);
         }
     };
-    
+
     const getResultImage = () => {
         const percentage = (score / questions.length) * 100;
         if (percentage === 100) return excellent;
@@ -104,12 +110,29 @@ function Dictionaries() {
         if (percentage >= 40) return good;
         return okay;
     };
-    
+
     return (
         <div>
             <button className="image-buttonGoBack goBack" onClick={handleGoBack}>
                 <img src={goBack} alt="Go Back" className="goBack-image" />
             </button>
+            {showConfetti && (
+                <img
+                    src={confetti}
+                    alt="Confetti Celebration"
+                    className="confetti-gif"
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "45%",
+                        height: "45%",
+                        zIndex: 10,
+                        pointerEvents: "none",
+                    }}
+                />
+            )}
             {showTutorial ? (
                 <div className="popup">
                     <h2 className="spellingText">Malaus ka king diksyunaryung letratu!</h2>
@@ -128,7 +151,14 @@ function Dictionaries() {
             ) : (
                 <div className="picture-dictionary-container">
                     <img src={pictureDictionaries} alt="Picture Dictionaries" className="title-image" />
-                    <h3 style={{ marginTop: "0px" }}>Score: {score}</h3>
+                    <h3 style={{
+                        marginTop: "0px",
+                        marginBottom: "0px",
+                        fontSize: "32px",
+                        fontWeight: "bold",
+                    }}>
+                        Score: {score}
+                    </h3>
                     <div className="question-container">
                         <img src={currentItem.image} alt="Image" className="question-image" />
                         <div className="choices-container">

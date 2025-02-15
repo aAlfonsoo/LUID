@@ -149,46 +149,95 @@ body {
 }
 
 /* Image Buttons */
+
+.homehomeContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.buttonIcon-container {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
+.homeButtonImage {
+    height: 210px;
+}
+
+.translationz {
+    margin-left: -60px;
+}
+
+.gamez {
+    margin-left: 40px;
+    margin-right: 80px;
+}
+
+.bookz {
+    margin-left: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
 .homeContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: -50px;
-  }
-  
-  .row {
+}
+
+.row {
+    margin-top: 100px;
     height: 150px;
     text-align: center;
-  }
+}
 
-  .row2 {
-    margin-top: -15px;
+.row2 {
+    margin-top: 50px;
     height: 150px;
     text-align: center;
-  }
+}
 
-  .row3 {
+.row3 {
     margin-top: 18px;
     height: 150px;
     text-align: center;
-  }
+}
 
-  .row4 {
+.row4 {
     margin-top: 45px;
-    height: 100px;
+    height: 150px;
     text-align: center;
-  }
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
+    background: rgba(255, 255, 255, 0.2); /* Translucent white */
+    backdrop-filter: blur(10px); /* Blurry glass effect */
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
 
-  .rowTitle {
+
+
+.rowTitle {
     height: 50px;
-  }
-  
-  .button-container {
+}
+
+.button-container {
     display: flex;
     justify-content: center;
-    gap: 45px;
+    gap: 100px;
     flex-wrap: wrap;
-  }
+}
 
 .image-button {
     cursor: pointer;
@@ -285,35 +334,42 @@ body {
 }
 
 .game-image {
-    height: 125px;
-}
-.game-image-1 {
-    height: 110px;
-}
-.game-image-2 {
-    height: 108px;
+    height: 206px; /* 125px * 1.65 */
 }
 
+.game-image-1 {
+    height: 182px; /* 110px * 1.65 */
+}
+
+.game-image-2 {
+    height: 178px; /* 108px * 1.65 */
+}
 
 .game-image2 {
-    height: 92px;
-}
-.game-image2-1 {
-    height: 55px;
-}
-.game-image2-2 {
-    height: 62px;
-}
-.game-image2-4 {
-    height: 80px;
-}
-.game-image2-5 {
-    height: 65px;
+    height: 152px; /* 92px * 1.65 */
 }
 
-.game-image3 {
-    height: 135px;
+.game-image2-1 {
+    height: 91px; /* 55px * 1.65 */
 }
+
+.game-image2-2 {
+    height: 102px; /* 62px * 1.65 */
+}
+
+.game-image2-4 {
+    height: 132px; /* 80px * 1.65 */
+}
+
+.game-image2-5 {
+    height: 107px; /* 65px * 1.65 */
+}
+
+
+.game-image3 {
+    height: 223px; /* 135px * 1.65 */
+}
+
 
 .image-button:hover .game-image,
 .image-button:hover .game-image2,
@@ -369,6 +425,14 @@ body {
 
 .goBack-image {
     height: 100px;
+}
+
+.navImage {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 120px;
 }
 
 
@@ -452,22 +516,22 @@ body {
 .bookButton {
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
-	position: relative;
-	font: inherit;
-	background-color: #007bff;
-	border: 0;
-	color: #fff;
-	border-radius: 1000em;
-	font-size: 1.4rem;
-	padding: 0.25em .5em;
-	font-weight: 600;
-	box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
-		0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
-		0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
-	transition: 0.25s ease;
-	cursor: pointer;
-	touch-action: manipulation;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+    font: inherit;
+    background-color: #007bff;
+    border: 0;
+    color: #fff;
+    border-radius: 1000em;
+    font-size: 1.4rem;
+    padding: 0.25em .5em;
+    font-weight: 600;
+    box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
+        0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
+        0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
+    transition: 0.25s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .bookButton:hover:not(:disabled) {
@@ -475,10 +539,10 @@ body {
 }
 
 .bookButton:active:not(:disabled) {
-	transform: translateY(0.3em);
-	box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
-		0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
-		0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
+    transform: translateY(0.3em);
+    box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+        0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
+        0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
 }
 
 button:disabled {
@@ -556,39 +620,46 @@ main#carousel {
 }
 
 .item {
-    width: 262.5px; /* Slightly larger than 210px */
-    height: 350px; /* Keeps the 3:4 aspect ratio */
+    width: 262.5px;
+    /* Slightly larger than 210px */
+    height: 350px;
+    /* Keeps the 3:4 aspect ratio */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 0px; /* Adjusted for balance */
+    margin-top: 0px;
+    /* Adjusted for balance */
     margin-bottom: 30px;
 }
 
 .cardImage {
-    height: 208.33px; /* Slightly larger than 166.67px */
+    height: 208.33px;
+    /* Slightly larger than 166.67px */
     width: auto;
-    margin-bottom: 8px; /* Slightly larger than 6.67px */
+    margin-bottom: 8px;
+    /* Slightly larger than 6.67px */
 }
 
 .cardName {
     font-family: 'Patrick Hand', 'Comic Sans MS', 'Arial', sans-serif;
-    font-size: 1.46rem; /* Slightly larger than 1.17rem */
+    font-size: 1.46rem;
+    /* Slightly larger than 1.17rem */
     font-weight: bolder;
     text-align: center;
     text-transform: uppercase;
     display: block;
     background: #ffffff;
     color: #000000;
-    padding: 4px 16.67px; /* Slightly larger than 3.33px 13.33px */
+    padding: 4px 16.67px;
+    /* Slightly larger than 3.33px 13.33px */
     width: 80%;
     box-sizing: border-box;
 }
 
 
-  
-  
+
+
 .arrow-button {
     background: none;
     border: none;
@@ -680,26 +751,27 @@ main#carousel {
     background: #f44336;
     color: white;
 }
+
 /**/
 
 .nav-button {
     margin-top: 17.5px;
-	position: relative;
-	font: inherit;
-	background-color: rgb(26, 117, 26);
-	border: 0;
-	color: #ffffff;
-	border-radius: 0.3em;
-	font-size: 1.4rem;
-	padding: 0.25em 1em;
-	font-weight: 600;
-	box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
-		0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
-		0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
-	transition: 0.25s ease;
-	cursor: pointer;
-	touch-action: manipulation;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+    font: inherit;
+    background-color: rgb(26, 117, 26);
+    border: 0;
+    color: #ffffff;
+    border-radius: 0.3em;
+    font-size: 1.4rem;
+    padding: 0.25em 1em;
+    font-weight: 600;
+    box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
+        0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
+        0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
+    transition: 0.25s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .nav-button:hover:not(:disabled) {
@@ -708,23 +780,26 @@ main#carousel {
 }
 
 .nav-button:active:not(:disabled) {
-	transform: translateY(0.3em);
+    transform: translateY(0.3em);
     color: rgb(26, 117, 26);
     background-color: #ffffff;
-	box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
-		0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
-		0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
+    box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+        0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
+        0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
 }
+
 .nav-button:disabled {
-	background-color: #aaa;
-	cursor: not-allowed;
+    background-color: #aaa;
+    cursor: not-allowed;
 }
+
 /**/
 
 .popup {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers content horizontally */
+    align-items: center;
+    /* Centers content horizontally */
     transform: translateY(-20px);
     text-align: center;
     border-radius: 8px;
@@ -737,22 +812,22 @@ main#carousel {
 }
 
 .return-button {
-	position: relative;
-	font: inherit;
-	background-color: #007bff;
-	border: 0;
-	color: #fff;
-	border-radius: 0.3em;
-	font-size: 1.4rem;
-	padding: 0.25em 1em;
-	font-weight: 600;
-	box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
-		0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
-		0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
-	transition: 0.25s ease;
-	cursor: pointer;
-	touch-action: manipulation;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+    font: inherit;
+    background-color: #007bff;
+    border: 0;
+    color: #fff;
+    border-radius: 0.3em;
+    font-size: 1.4rem;
+    padding: 0.25em 1em;
+    font-weight: 600;
+    box-shadow: inset 0 0.05em 0 0 #f4f4f4, 0 0.05em 0 0 #efefef,
+        0 0.1em 0 0 #ececec, 0 0.2em 0 0 #e0e0e0, 0 0.25em 0 0 #dedede,
+        0 0.3em 0 0 #dcdcdc, 0 0.35em 0 0 #cacaca, 0 0.35em 0.4em 0 #cecece;
+    transition: 0.25s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .return-button:hover {
@@ -760,10 +835,10 @@ main#carousel {
 }
 
 .return-button:active {
-	transform: translateY(0.3em);
-	box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
-		0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
-		0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
+    transform: translateY(0.3em);
+    box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
+        0 0.05em 0 0 #ececec, 0 0.1em 0 0 #e0e0e0, 0 0.1em 0 0 #dedede,
+        0 0.15em 0 0 #dcdcdc, 0 0.15em 0 0 #cacaca, 0 0.15em 0.3em 0 #cecece;
 }
 
 /* Spelling Game */
@@ -771,12 +846,12 @@ main#carousel {
     font-family: 'Chewy', cursive;
     font-size: 28px;
     color: #d9d9d9;
-    
-    text-shadow: 
-        -1px -1px 1px black,  
-         1px -1px 1px black,
-        -1px  1px 1px black,
-         1px  1px 1px black; 
+
+    text-shadow:
+        -1px -1px 1px black,
+        1px -1px 1px black,
+        -1px 1px 1px black,
+        1px 1px 1px black;
 }
 
 .spellingText2 {
@@ -863,6 +938,6 @@ main#carousel {
 .navigation-container {
     margin-left: 14px;
     display: flex;
-    gap: 20px; /* Space between items */
-  }
-  
+    gap: 20px;
+    /* Space between items */
+}
