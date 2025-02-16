@@ -3,7 +3,7 @@ import "../App.modules.css";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaPlay, FaPause } from "react-icons/fa";
-import { translationsIcon, gamesIcon, booksIcon, rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, } from "../assets/images";
+import { translationsIcon, gamesIcon, booksIcon, rowTitle4, } from "../assets/images";
 import { music1, music2, music3, music4, music5, music6, music7, music8, music9, music10, music11, music12, music13, } from "../assets/musics";
 
 function Home() {
@@ -106,31 +106,26 @@ function Home() {
   return (
     <div>
       <div className="homehomeContainer">
-        {/* Translations Section */}
-          <div className="buttonIcon-container">
-            <button className="image-button translationz" onClick={redirectTranslation}>
-              <img src={translationsIcon} alt="Translations" className="homeButtonImage" />
-            </button>
-          </div>
-        {/* Games Section */}
-          <div className="buttonIcon-container">
-            <button className="image-button gamez">
-              <img src={gamesIcon} alt="Games" className="homeButtonImage" onClick={redirectGame} />
-            </button>
-          </div>
-        {/* Books Section */}
-          <div className="buttonIcon-container">
-            <button className="image-button bookz" onClick={redirectBook}>
-              <img src={booksIcon} alt="Books" className="homeButtonImage" />
-            </button>
-          </div>
+        <div className="buttonIcon-container">
+          <button className="image-button translationz" onClick={redirectTranslation}>
+            <img src={translationsIcon} alt="Translations" className="homeButtonImage" />
+          </button>
         </div>
+        <div className="buttonIcon-container">
+          <button className="image-button gamez">
+            <img src={gamesIcon} alt="Games" className="homeButtonImage" onClick={redirectGame} />
+          </button>
+        </div>
+        <div className="buttonIcon-container">
+          <button className="image-button bookz" onClick={redirectBook}>
+            <img src={booksIcon} alt="Books" className="homeButtonImage" />
+          </button>
+        </div>
+      </div>
       <div className="row4">
         <img src={rowTitle4} alt="Music" className="rowTitle" />
         <div className="button-container">
-          {/* Wrap dropdown, button, and slider in a flex container */}
           <div style={{ display: "flex", alignItems: "center", gap: "20px", marginTop: "15px" }}>
-
             {/* Dropdown to select music */}
             <div style={{ position: "relative", width: "375px", marginLeft: "-420px", }}>
               <select
@@ -142,7 +137,7 @@ function Home() {
                   fontSize: "16px",
                   borderRadius: "10px",
                   border: "2px solid #ffcccb",
-                  backgroundColor: "#ffebcd", // Pastel Peach
+                  backgroundColor: "#ffebcd",
                   color: "#333",
                   fontWeight: "bold",
                   cursor: "pointer",
@@ -167,7 +162,6 @@ function Home() {
                 <option value="music13" style={{ backgroundColor: "#FFD1DC" }}>🎵 this is the way(kapampangan)</option>
               </select>
             </div>
-
             {/* Play/Pause Button */}
             <button
               onClick={() => playMusic(selectedMusic)}
@@ -185,7 +179,6 @@ function Home() {
             >
               {currentMusic === selectedMusic && isPlaying ? <FaPause /> : <FaPlay />}
             </button>
-
             {/* Slider for music progress */}
             <input
               type="range"
@@ -195,7 +188,7 @@ function Home() {
               onChange={(e) => handleSliderChange(e, selectedMusic)}
               className="custom-slider"
               style={{
-                flex: "1", // Allow slider to grow
+                flex: "1",
                 maxWidth: "400px",
                 marginLeft: "45px",
               }}

@@ -17,17 +17,17 @@ import {
   number8,
   number9,
   number10,
-  color1,  
-  color2,  
-  color3,  
-  color4,  
-  color5,  
-  color6,  
-  color7,  
-  color8,  
-  color9,  
-  color10,  
-  color11,  
+  color1,
+  color2,
+  color3,
+  color4,
+  color5,
+  color6,
+  color7,
+  color8,
+  color9,
+  color10,
+  color11,
   animal1,
   animal2,
   animal3,
@@ -43,22 +43,22 @@ import {
   animal13,
   animal14,
   animal15,
-  animal16,  
-  fruitVeg1,  
-  fruitVeg2,  
-  fruitVeg3,  
-  fruitVeg4,  
-  fruitVeg5,  
-  fruitVeg6,  
-  fruitVeg7,  
-  fruitVeg8,  
-  fruitVeg9,  
-  fruitVeg10,  
-  fruitVeg11,  
-  fruitVeg12,  
-  fruitVeg13,  
-  fruitVeg14,  
-  fruitVeg15,    
+  animal16,
+  fruitVeg1,
+  fruitVeg2,
+  fruitVeg3,
+  fruitVeg4,
+  fruitVeg5,
+  fruitVeg6,
+  fruitVeg7,
+  fruitVeg8,
+  fruitVeg9,
+  fruitVeg10,
+  fruitVeg11,
+  fruitVeg12,
+  fruitVeg13,
+  fruitVeg14,
+  fruitVeg15,
   genVocab1,
   genVocab2,
   genVocab3,
@@ -75,13 +75,13 @@ import {
   genVocab14,
   genVocab15,
   genVocab16,
-  genVocab17,  
+  genVocab17,
   spellingTutorial,
   speaker,
   confetti,
 } from "../assets/images";
 import "../App.modules.css";
-import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, phraseS1, phraseS2, phraseS3, phraseS4, phraseS5, phraseS6, phraseS7, phraseS8, phraseS9, phraseS10, phraseS11, phraseS12, phraseS13, phraseS14, phraseS15, phraseS16, phraseS17, phraseS18, phraseS19, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
+import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
 
 function Spelling() {
   const navigate = useNavigate();
@@ -89,9 +89,9 @@ function Spelling() {
     navigate(-1);
   };
   const location = useLocation(); // Get the category from navigation state
-  const { category } = location.state || {}; 
+  const { category } = location.state || {};
   // Initialize words data
- 
+
   // Define category-based word sets
   const wordsByCategory = {
     numbers: [
@@ -118,7 +118,7 @@ function Spelling() {
       { word: "ALUNTIANG", image: color3, sound: colorS3 },
       { word: "TAYUM", image: color2, sound: colorS2 },
       { word: "MAIRO", image: color1, sound: colorS1 },
-    ],    
+    ],
     animals: [
       { word: "ASU", image: animal1, sound: animalS1 },
       { word: "BAKA", image: animal2, sound: animalS2 },
@@ -136,7 +136,7 @@ function Spelling() {
       { word: "TUPA", image: animal14, sound: animalS14 },
       { word: "LUBINGAN", image: animal15, sound: animalS15 },
       { word: "BALYENA", image: animal16, sound: animalS16 },
-    ],    
+    ],
     fruitsVeg: [
       { word: "UBAS", image: fruitVeg1, sound: fruitVegS1 },
       { word: "KALAMUNDING", image: fruitVeg2, sound: fruitVegS2 },
@@ -153,7 +153,7 @@ function Spelling() {
       { word: "KULABASA", image: fruitVeg13, sound: fruitVegS13 },
       { word: "ISTRABERI", image: fruitVeg14, sound: fruitVegS14 },
       { word: "KAMATIS", image: fruitVeg15, sound: fruitVegS15 },
-    ],    
+    ],
     genVocab: [
       { word: "PAGKERAN", image: genVocab1, sound: genVocabS1 },
       { word: "BISIKLETA", image: genVocab2, sound: genVocabS2 },
@@ -329,12 +329,10 @@ function Spelling() {
     const word = userInput.join("");
     if (word === words[currentWordIndex].word) {
       setScore((prev) => prev + 1);
-
-      // Show confetti for a specific time (e.g., 3 seconds)
       setShowConfetti(true);
       setTimeout(() => {
         setShowConfetti(false);
-      }, 1900); // Adjust time as needed
+      }, 1900);
     }
 
     if (currentWordIndex < words.length - 1) {
@@ -412,7 +410,6 @@ function Spelling() {
               className="speaker-icon"
               onClick={() => playAudio(words[currentWordIndex]?.sound)}
             />
-
           </div>
           <div className="spelling-word">
             {userInput.map((letter, index) => (

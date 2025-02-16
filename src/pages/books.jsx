@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { spellingTutorial, goBack, bookAcover, bookAcover2, bookAcover3, bookAcover4, bookA1, bookA2, bookA3, bookA4, bookA5, bookA6, bookA7, bookA8, bookA9, bookA10, bookA11, bookA12, bookA13, bookA14, bookA15, bookA16, bookA17, bookA18, bookA19, bookBcover, bookBcover2, bookBcover3, bookBcover4, bookB1, bookB2, bookB3, bookB4, bookB5, bookB6, bookB7, bookB8, bookB9, bookB10, bookB11, bookB12, bookB13, bookB14, bookB15, bookB16, bookB17, bookB18, bookB19, bookB20, bookB21, bookB22, bookCcover, bookCcover2, bookCcover3, bookCcover4, bookC1, bookC2, bookC3, bookC4, bookC5, bookC6, bookC7, bookC8, bookC9, bookC10, bookC11, bookC12, bookC13, bookC14, bookC15, bookC16, bookC17, bookC18, bookC19, bookC20, bookC21, bookC22 } from "../assets/images";
+import { goBack, bookAcover, bookAcover2, bookAcover3, bookAcover4, bookA1, bookA2, bookA3, bookA4, bookA5, bookA6, bookA7, bookA8, bookA9, bookA10, bookA11, bookA12, bookA13, bookA14, bookA15, bookA16, bookA17, bookA18, bookA19, bookBcover, bookBcover2, bookBcover3, bookBcover4, bookB1, bookB2, bookB3, bookB4, bookB5, bookB6, bookB7, bookB8, bookB9, bookB10, bookB11, bookB12, bookB13, bookB14, bookB15, bookB16, bookB17, bookB18, bookB19, bookB20, bookB21, bookB22, bookCcover, bookCcover2, bookCcover3, bookCcover4, bookC1, bookC2, bookC3, bookC4, bookC5, bookC6, bookC7, bookC8, bookC9, bookC10, bookC11, bookC12, bookC13, bookC14, bookC15, bookC16, bookC17, bookC18, bookC19, bookC20, bookC21, bookC22 } from "../assets/images";
 import "../App.modules.css";
 
 const Books = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { category } = location.state || {};
-
-    const handleGoBack = () => {
-        navigate(-1);
-    };
 
     const pagesData = {
         bookA: [
@@ -58,10 +54,7 @@ const Books = () => {
         ],
     };
 
-    // Select the pages for the current category or default to an empty array
     const bookPages = pagesData[category] || [];
-
-    // Setup state for current page and z-index management for the page flip effect
     const [page, setPage] = useState(0);
     const [zIndexes, setZIndexes] = useState(
         Array.from({ length: bookPages.length + 1 }, (_, i) => bookPages.length - i)
@@ -107,16 +100,16 @@ const Books = () => {
                                 <img src={pageContent.frontImage} alt={`Page ${index}`} />
                             )}
                         </div>
-                            {pageContent.backImage?.endsWith(".mp4") ? (
-                                <video controls className="back-page">
-                                    <source src={pageContent.backImage} type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
-                            ) : (
-                                <div className="back-page">
+                        {pageContent.backImage?.endsWith(".mp4") ? (
+                            <video controls className="back-page">
+                                <source src={pageContent.backImage} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        ) : (
+                            <div className="back-page">
                                 <img src={pageContent.backImage} alt={`Page ${index}`} />
-                                </div>
-                            )}
+                            </div>
+                        )}
                     </div>
                 ))}
                 <div

@@ -1,15 +1,11 @@
 import React from 'react';
 import "../App.modules.css";
-import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { FaPlay, FaPause } from "react-icons/fa";
-import { translationsIcon, goBack, rowTitle1, rowTitle2, rowTitle3, rowTitle4, spellingGames, flashCards, pictureDictionaries, numbers, phrases, colours, animals, fruitsVeg, genVocab, book1, book2, book3, } from "../assets/images";
-import { music1, music2, music3, music4, music5, music6, music7, music8, music9, music10, music11, music12, music13, } from "../assets/musics";
+import { goBack, pictureDictionaries, numbers, colours, animals, fruitsVeg, genVocab, } from "../assets/images";
 
 function DictionariesNav() {
     const navigate = useNavigate();
     const handleGoBack = () => navigate(-1);
-
     const redirectTranslation = (category) => {
         navigate('/dictionaries', { state: { category } });
     };
@@ -21,7 +17,6 @@ function DictionariesNav() {
             </button>
             <img src={pictureDictionaries} alt="Picture Dictionaries" className="navImage" />
             <div className="homeContainer">
-                {/* Translations Section */}
                 <div className="row">
                     <div className="button-container">
                         <button className="image-button numbers" onClick={() => redirectTranslation('numbers')}>

@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { confetti, speaker, dictionaryTutorial, goBack, flashCards, excellent, verygood, good, okay, number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, color1, color2, color3, color4, color5, color6, color7, color8, color9, color10, color11, animal1, animal2, animal3, animal4, animal5, animal6, animal7, animal8, animal9, animal10, animal11, animal12, animal13, animal14, animal15, animal16, fruitVeg1, fruitVeg2, fruitVeg3, fruitVeg4, fruitVeg5, fruitVeg6, fruitVeg7, fruitVeg8, fruitVeg9, fruitVeg10, fruitVeg11, fruitVeg12, fruitVeg13, fruitVeg14, fruitVeg15, genVocab1, genVocab2, genVocab3, genVocab4, genVocab5, genVocab6, genVocab7, genVocab8, genVocab9, genVocab10, genVocab11, genVocab12, genVocab13, genVocab14, genVocab15, genVocab16, genVocab17, } from "../assets/images";
 import "../App.modules.css";
-import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, phraseS1, phraseS2, phraseS3, phraseS4, phraseS5, phraseS6, phraseS7, phraseS8, phraseS9, phraseS10, phraseS11, phraseS12, phraseS13, phraseS14, phraseS15, phraseS16, phraseS17, phraseS18, phraseS19, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
+import { bgMusic, numberS1, numberS2, numberS3, numberS4, numberS5, numberS6, numberS7, numberS8, numberS9, numberS10, animalS1, animalS2, animalS3, animalS4, animalS5, animalS6, animalS7, animalS8, animalS9, animalS10, animalS11, animalS12, animalS13, animalS14, animalS15, animalS16, colorS1, colorS2, colorS3, colorS4, colorS5, colorS6, colorS7, colorS8, colorS9, colorS10, colorS11, fruitVegS1, fruitVegS2, fruitVegS3, fruitVegS4, fruitVegS5, fruitVegS6, fruitVegS7, fruitVegS8, fruitVegS9, fruitVegS10, fruitVegS11, fruitVegS12, fruitVegS13, fruitVegS14, fruitVegS15, genVocabS1, genVocabS2, genVocabS3, genVocabS4, genVocabS5, genVocabS6, genVocabS7, genVocabS8, genVocabS9, genVocabS10, genVocabS11, genVocabS12, genVocabS13, genVocabS14, genVocabS15, genVocabS16, genVocabS17 } from "../assets/musics";
 
 function Cards() {
   const navigate = useNavigate();
   const handleGoBack = () => navigate(-1);
-
-  const location = useLocation(); // Get the category from navigation state
+  const location = useLocation();
   const { category } = location.state || {};
 
   const pictureDictionaryByCategory = {
@@ -93,10 +92,7 @@ function Cards() {
     ],
   };
 
-  // Get dictionary based on category
   const pictureDictionary = pictureDictionaryByCategory[category] || [];
-
-
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState(null);
@@ -105,19 +101,17 @@ function Cards() {
   const [showTutorial, setShowTutorial] = useState(true);
   const [isLocked, setIsLocked] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentAudio, setCurrentAudio] = useState(null); // Store currently playing audio
+  const [currentAudio, setCurrentAudio] = useState(null);
   const [bgAudio] = useState(new Audio(bgMusic));
   const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
-    const shuffled = [...pictureDictionary].sort(() => Math.random() - 0.5).slice(0, 10); // Limit to 10 items
+    const shuffled = [...pictureDictionary].sort(() => Math.random() - 0.5).slice(0, 10);
     setQuestions(shuffled);
     if (!showTutorial) {
-      // Play background music
       bgAudio.loop = true;
-      bgAudio.volume = 0.030; // Adjust volume if needed
+      bgAudio.volume = 0.030;
       bgAudio.play().catch((err) => console.error("Audio playback failed:", err));
-      // Cleanup function: stop audio when leaving
       return () => {
         bgAudio.pause();
         bgAudio.currentTime = 0;
@@ -127,46 +121,37 @@ function Cards() {
 
   const currentItem = questions[currentIndex];
 
-  // Handle playing audio and selection
   const handleChoiceSelection = (choice) => {
     if (isPlaying) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
       setIsPlaying(false);
     }
-
-    // Lower the background music volume
-    bgAudio.volume = 0.0040; // Adjust to a lower value
-
+    bgAudio.volume = 0.0040;
     const audio = new Audio(choice);
     setCurrentAudio(audio);
     setIsPlaying(true);
     setSelectedChoice(choice);
-
     audio.play();
     audio.onended = () => {
       setIsPlaying(false);
-      bgAudio.volume = 0.030; // Restore original volume
+      bgAudio.volume = 0.030;
     };
   };
 
-
-  // Finalize answer when submitting
   const handleFinalize = () => {
     if (selectedChoice && !isLocked) {
       setIsLocked(true);
       if (selectedChoice === currentItem.correctAnswer) {
         setScore((prevScore) => prevScore + 1);
-        // Show confetti for a specific time (e.g., 3 seconds)
         setShowConfetti(true);
         setTimeout(() => {
           setShowConfetti(false);
-        }, 1900); // Adjust time as needed
+        }, 1900);
       }
     }
   };
 
-  // Move to the next question
   const handleNext = () => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
@@ -177,7 +162,6 @@ function Cards() {
     }
   };
 
-  // Get result image
   const getResultImage = () => {
     const percentage = (score / questions.length) * 100;
     if (percentage === 100) return excellent;

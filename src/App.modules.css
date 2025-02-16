@@ -218,12 +218,12 @@ body {
     margin-top: 45px;
     height: 150px;
     text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
-    background: rgba(255, 255, 255, 0.2); /* Translucent white */
-    backdrop-filter: blur(10px); /* Blurry glass effect */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -241,7 +241,6 @@ body {
 
 .image-button {
     cursor: pointer;
-    /*position: absolute;*/
     background: none;
     border: none;
     padding: 0;
@@ -334,40 +333,49 @@ body {
 }
 
 .game-image {
-    height: 206px; /* 125px * 1.65 */
+    height: 206px;
+    /* 125px * 1.65 */
 }
 
 .game-image-1 {
-    height: 182px; /* 110px * 1.65 */
+    height: 182px;
+    /* 110px * 1.65 */
 }
 
 .game-image-2 {
-    height: 178px; /* 108px * 1.65 */
+    height: 178px;
+    /* 108px * 1.65 */
 }
 
 .game-image2 {
-    height: 152px; /* 92px * 1.65 */
+    height: 152px;
+    /* 92px * 1.65 */
 }
 
 .game-image2-1 {
-    height: 91px; /* 55px * 1.65 */
+    height: 91px;
+    /* 55px * 1.65 */
 }
 
 .game-image2-2 {
-    height: 102px; /* 62px * 1.65 */
+    height: 102px;
+    /* 62px * 1.65 */
 }
 
 .game-image2-4 {
-    height: 132px; /* 80px * 1.65 */
+    height: 132px;
+    /* 80px * 1.65 */
 }
 
 .game-image2-5 {
-    height: 107px; /* 65px * 1.65 */
+    height: 107px;
+    /* 65px * 1.65 */
 }
 
 
 .game-image3 {
-    height: 223px; /* 135px * 1.65 */
+    height: 223px;
+    /* 135px * 1.65 */
 }
 
 
@@ -621,30 +629,24 @@ main#carousel {
 
 .item {
     width: 262.5px;
-    /* Slightly larger than 210px */
     height: 350px;
-    /* Keeps the 3:4 aspect ratio */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 0px;
-    /* Adjusted for balance */
     margin-bottom: 30px;
 }
 
 .cardImage {
     height: 208.33px;
-    /* Slightly larger than 166.67px */
     width: auto;
     margin-bottom: 8px;
-    /* Slightly larger than 6.67px */
 }
 
 .cardName {
     font-family: 'Patrick Hand', 'Comic Sans MS', 'Arial', sans-serif;
     font-size: 1.46rem;
-    /* Slightly larger than 1.17rem */
     font-weight: bolder;
     text-align: center;
     text-transform: uppercase;
@@ -652,13 +654,9 @@ main#carousel {
     background: #ffffff;
     color: #000000;
     padding: 4px 16.67px;
-    /* Slightly larger than 3.33px 13.33px */
     width: 80%;
     box-sizing: border-box;
 }
-
-
-
 
 .arrow-button {
     background: none;
@@ -799,7 +797,6 @@ main#carousel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Centers content horizontally */
     transform: translateY(-20px);
     text-align: center;
     border-radius: 8px;
@@ -939,5 +936,4 @@ main#carousel {
     margin-left: 14px;
     display: flex;
     gap: 20px;
-    /* Space between items */
 }
