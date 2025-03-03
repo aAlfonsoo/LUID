@@ -194,6 +194,7 @@ import bookC20 from "./c20.mp4";
 import bookC21 from "./c21.jpg";
 import bookC22 from "./c22.jpg";
 import spellingTutorial from "./spellingTutorial.mp4";
+import cardsTutorial from "./cardsTutorial.mp4";
 import dictionaryTutorial from "./dictionaryTutorial.mp4";
 import speaker from "./speaker.png";
 import translationsIcon from "./52.png";
@@ -400,6 +401,7 @@ export {
   bookC22,
   spellingTutorial,
   dictionaryTutorial,
+  cardsTutorial,
   speaker,
   translationsIcon,
   gamesIcon,
